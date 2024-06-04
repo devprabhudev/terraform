@@ -11,3 +11,7 @@ resource "aws_instance" "lab1" {
 output "available_zones" {
     value = data.aws_availability_zones.available_zones.names
   }
+output "names" {
+    value = aws_instance.labs.*.tags.Name
+  
+}
