@@ -3,6 +3,7 @@ resource "aws_instance" "lab1" {
     ami = "ami-03238ca76a3266a07"
     instance_type = "t3.micro"
     availability_zone = data.aws_availability_zones.available_zones.names[count.index]
+    
     tags = {
       Name = "Lab-${count.index}"
     }
@@ -10,8 +11,3 @@ resource "aws_instance" "lab1" {
 output "available_zones" {
     value = data.aws_availability_zones.available_zones.names
   }
-output "instance_name" {
-    
-    value = aws_instance.lab1.*.id
-  
-}
